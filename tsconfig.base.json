@@ -17,6 +17,7 @@
     "paths": {
       "@pathfinder/error-page": ["core/error-page/src/index.ts"],
       "@pathfinder/login-layout": ["layout/login-layout/src/index.ts"],
+      "@pathfinder/login-page": ["core/login-page/src/index.ts"],
       "@pathfinder/main-layout": ["layout/main-layout/src/index.ts"],
       "@pathfinder/main-page": ["core/main-page/src/index.ts"]
     }

@@ -1,22 +1,20 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
 
 import { LoginLayoutComponent } from './login-layout.component';
 
 describe('LoginLayoutComponent', () => {
-  let component: LoginLayoutComponent;
-  let fixture: ComponentFixture<LoginLayoutComponent>;
+  let spectator: Spectator<LoginLayoutComponent>;
+  const createComponent = createComponentFactory(LoginLayoutComponent);
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [LoginLayoutComponent]
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(LoginLayoutComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  beforeEach(() => {
+    spectator = createComponent();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it(`render main-layout`, () => {
+    expect(spectator.query('p')).toHaveExactText('login-layout');
+  });
+
+  it(`render router outlet`, () => {
+    expect(spectator.query('router-outlet')).toExist();
   });
 });

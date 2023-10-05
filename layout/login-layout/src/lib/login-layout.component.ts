@@ -1,9 +1,9 @@
-import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
-  imports: [CommonModule],
+  imports: [RouterModule],
   templateUrl: './login-layout.component.html',
   styleUrls: ['./login-layout.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
