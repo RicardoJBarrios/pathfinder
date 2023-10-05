@@ -1,24 +1,24 @@
-import { TestBed } from '@angular/core/testing';
+import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
+
 import { AppComponent } from './app.component';
-import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [AppComponent, RouterTestingModule]
-    }).compileComponents();
+  let spectator: Spectator<AppComponent>;
+  const createComponent = createComponentFactory(AppComponent);
+
+  beforeEach(() => {
+    spectator = createComponent();
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Welcome pathfinder');
+  it(`have as title 'pathfinder'`, () => {
+    expect(spectator.component.title).toBe('pathfinder');
   });
 
-  it(`should have as title 'pathfinder'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('pathfinder');
+  it(`render title`, () => {
+    expect(spectator.query('h1')).toHaveExactText('Welcome pathfinder');
+  });
+
+  it(`render router outlet`, () => {
+    expect(spectator.query('router-outlet')).toExist();
   });
 });

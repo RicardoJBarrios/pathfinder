@@ -5,17 +5,24 @@
   "overrides": [
     {
       "files": ["*.ts"],
+      "plugins": ["simple-import-sort", "unused-imports"],
       "extends": [
         "plugin:@nx/typescript",
         "plugin:@nx/angular",
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "simple-import-sort/imports": "error",
+        "simple-import-sort/exports": "error",
+        "unused-imports/no-unused-imports": "error",
+        "unused-imports/no-unused-vars": "warn",
         "@angular-eslint/directive-selector": [
           "error",
           {
             "type": "attribute",
-            "prefix": "pathfinder",
+            "prefix": "pf",
             "style": "camelCase"
           }
         ],
@@ -23,10 +30,22 @@
           "error",
           {
             "type": "element",
-            "prefix": "pathfinder",
+            "prefix": "pf",
             "style": "kebab-case"
           }
         ]
+      }
+    },
+    {
+      "files": ["*.spec.ts"],
+      "plugins": ["jest-extended", "jest"],
+      "extends": ["plugin:jest-extended/all", "plugin:jest/style"],
+      "env": {
+        "jest": true
+      },
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off",
+        "jest/prefer-spy-on": "error"
       }
     },
     {
