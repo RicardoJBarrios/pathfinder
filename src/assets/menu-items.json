@@ -1,0 +1,6 @@
+[
+  { "label": "Inicio", "path": "/", "icon": "home" },
+  { "label": "Tiradas", "path": "/" },
+  { "label": "Críticos", "path": "/" },
+  { "label": "Pifias", "path": "/" }
+]

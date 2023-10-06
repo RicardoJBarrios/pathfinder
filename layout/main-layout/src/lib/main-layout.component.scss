@@ -1,0 +1,45 @@
+.pf-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+h1 {
+  padding: 0 2em 0 0.5rem;
+}
+
+nav a {
+  text-decoration: none;
+
+  //   &.active {
+  //     background-color: red;
+  //   }
+}
+
+mat-sidenav-container {
+  flex: 1;
+}
+
+mat-sidenav {
+  width: 200px;
+}
+
+mat-sidenav-content {
+  padding: 0 1em;
+}
+
+.pf-is-mobile {
+  mat-toolbar {
+    position: fixed;
+    z-index: 2;
+  }
+
+  mat-sidenav-container {
+    flex: 1 0 auto;
+    margin-top: 56px;
+  }
+}

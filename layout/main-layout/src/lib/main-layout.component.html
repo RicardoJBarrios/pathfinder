@@ -1,2 +1,25 @@
-<p>main-layout</p>
-<router-outlet></router-outlet>
+<div class="pf-container" [class.pf-is-mobile]="isHandset()">
+  <mat-toolbar color="primary">
+    <button *ngIf="isHandset()" mat-icon-button aria-label="Menú" (click)="toggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1>Pathfinder</h1>
+    <nav *ngIf="!isHandset()">
+      <a *ngFor="let item of menuItems()" mat-button [routerLink]="item.path" routerLinkActive="active"
+        ><mat-icon *ngIf="item.icon">{{ item.icon }}</mat-icon
+        >{{ item.label }}</a
+      >
+    </nav>
+  </mat-toolbar>
+
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav [mode]="sidenavMode()" [fixedInViewport]="isHandset()" [fixedTopGap]="48">
+      <mat-nav-list>
+        <a *ngFor="let item of menuItems()" mat-list-item [routerLink]="item.path" routerLinkActive="active">{{
+          item.label
+        }}</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content><router-outlet></router-outlet></mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
