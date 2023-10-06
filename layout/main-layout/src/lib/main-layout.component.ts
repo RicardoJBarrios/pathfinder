@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { filter } from 'rxjs';
 
 import { MainLayoutService } from './main-layout.service';
+import { MenuItem } from './menu-item.type';
 
 @Component({
   standalone: true,
@@ -41,11 +42,15 @@ export class MainLayoutComponent implements OnInit {
     this.#closeSidenavIfNoHandset();
   }
 
-  toggleSidenav() {
+  toggleSidenav(): void {
     this.sidenav.toggle();
   }
 
-  #closeSidenavIfNoHandset() {
+  trackMenuByLabel(index: number, item: MenuItem): string {
+    return item.label;
+  }
+
+  #closeSidenavIfNoHandset(): void {
     this.#service.isHandset$
       .pipe(
         filter((isHandset: boolean) => isHandset === false),
